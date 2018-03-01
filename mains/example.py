@@ -14,7 +14,7 @@ def main():
     # then process the json configration file
     try:
         args = get_args()
-        config = process_config(args.config)
+        config = process_config("../configs/example.json") #(args.config)
 
     except:
         print("missing or invalid arguments")
@@ -41,3 +41,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    

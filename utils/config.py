@@ -1,6 +1,11 @@
 import json
-from bunch import Bunch
+#from bunch import Bunch
 import os
+
+class Bunch(dict):
+    def __init__(self, *args, **kwargs):
+        super(Bunch, self).__init__(*args, **kwargs)
+        self.__dict__ = self
 
 
 def get_config_from_json(json_file):
@@ -24,3 +29,8 @@ def process_config(jsonfile):
     config.summary_dir = os.path.join("../experiments", config.exp_name, "summary/")
     config.checkpoint_dir = os.path.join("../experiments", config.exp_name, "checkpoint/")
     return config
+
+if __name__ == '__main__':
+    config = process_config("../configs/example.json")
+    print(config)
+    
